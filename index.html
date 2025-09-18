@@ -19,14 +19,12 @@
             --muted: #a5a3bb;
             --accent: #8b5cf6;
             --accent2: #a78bfa;
+            --warn: #ffbf47;
             --green: #06D6A0;
             --red: #ff5d6c;
             --shadow: 0 8px 30px rgba(0,0,0,.35), inset 0 0 0 1px var(--stroke);
             --radius: 18px;
             --blur: saturate(120%) blur(12px);
-        }
-        html {
-            scroll-behavior: smooth;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -34,38 +32,7 @@
             background: radial-gradient(1200px 800px at 10% -10%, #2e1f54 0, transparent 60%),
                         radial-gradient(1000px 600px at 110% 10%, #1e1340 0, transparent 60%),
                         linear-gradient(180deg, var(--bg1), var(--bg2));
-        }
-        .infographic-header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: rgba(19, 16, 34, 0.85);
-            backdrop-filter: var(--blur);
-            -webkit-backdrop-filter: var(--blur);
-            border-bottom: 1px solid var(--stroke);
-        }
-        .nav-link {
-            transition: all 0.2s ease-in-out;
-            padding: 1rem 0.5rem;
-            border-bottom: 2px solid transparent;
-            white-space: nowrap;
-        }
-        .nav-link:hover {
-            color: white;
-        }
-        .nav-link.active {
-            color: var(--accent2);
-            border-bottom-color: var(--accent2);
-        }
-        .infographic-section {
-            padding: 4rem 1rem;
-            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
-        }
-        .infographic-section:first-of-type {
-            padding-top: 6rem;
-        }
-        .infographic-section:last-of-type {
-            border-bottom: none;
+            min-height: 100vh;
         }
         .stat-card {
             background: var(--card);
@@ -75,6 +42,11 @@
             -webkit-backdrop-filter: var(--blur);
             border-radius: var(--radius);
             padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,.45), inset 0 0 0 1px var(--stroke);
         }
         .chart-container {
             position: relative;
@@ -92,211 +64,391 @@
             color: #170e2f;
             font-weight: 700;
         }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(139, 92, 246, 0.4);
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 300px;
+                max-height: 350px;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-200">
+<body>
 
-    <header class="infographic-header">
-        <nav class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-center items-center space-x-1 md:space-x-6 text-xs sm:text-sm font-semibold text-gray-400">
-                <a href="#intro" class="nav-link">Intro</a>
-                <a href="#problem" class="nav-link">The Cost</a>
-                <a href="#comparison" class="nav-link">The Flow</a>
-                <a href="#solution" class="nav-link">The Gateway</a>
-                <a href="#steps" class="nav-link">Action Steps</a>
-                <a href="#cta" class="nav-link">Next Step</a>
-            </div>
-        </nav>
+    <header class="text-center py-12 px-4">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">The Digital Handshake</h1>
+        <h2 class="text-xl md:text-2xl font-semibold text-purple-300 mt-2">From Digital Dead End to Deal Maker</h2>
+        <p class="max-w-3xl mx-auto mt-4 text-gray-400">In a world of digital noise, your email signature is an overlooked powerhouse. It's time to transform it from a passive sign-off into your most active networking asset.</p>
     </header>
 
-    <main>
-        <section id="intro" class="infographic-section text-center min-h-[60vh] flex flex-col justify-center items-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">The Digital Handshake</h1>
-            <h2 class="text-xl md:text-3xl font-semibold text-purple-300 mt-2">From Digital Dead End to Deal Maker</h2>
-            <p class="max-w-3xl mx-auto mt-6 text-gray-400 text-lg">In a world with 4.6 billion new pieces of content daily, your email signature must be more than a sign-off. It's time to transform it into your most active networking asset.</p>
-        </section>
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-        <section id="problem" class="infographic-section">
-             <div class="text-center">
-                <h3 class="text-3xl md:text-4xl font-bold mb-4 text-white">The Hidden Cost of 'Business as Usual'</h3>
-                <p class="max-w-3xl mx-auto var(--muted) mb-12 text-gray-400">Traditional signatures are static and unengaging. This results in countless missed opportunities hidden in the daily flood of over 376 billion emails.</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
-                    <div class="stat-card">
-                        <div class="text-5xl font-black" style="color: var(--accent2);">10.8</div>
-                        <div class="mt-2 font-semibold text-lg text-white">Hours Wasted Weekly</div>
-                        <p class="text-sm var(--muted) mt-1 text-gray-400">Professionals spend over a full workday each week on unproductive email management.</p>
-                    </div>
-                    <div class="stat-card">
-                        <div class="text-5xl font-black" style="color: var(--accent2);">87%</div>
-                        <div class="mt-2 font-semibold text-lg text-white">Of B2B Buyers Judge You Early</div>
-                        <p class="text-sm var(--muted) mt-1 text-gray-400">A strong opinion is formed based on your digital presence before a first meeting ever happens.</p>
-                    </div>
-                     <div class="stat-card">
-                        <div class="text-5xl font-black" style="color: var(--accent2);">69%</div>
-                        <div class="mt-2 font-semibold text-lg text-white">Of The Buyer's Journey is Digital</div>
-                        <p class="text-sm var(--muted) mt-1 text-gray-400">Prospects complete most of their research and evaluation before engaging with sales.</p>
-                    </div>
+        <section id="problem" class="mb-20 text-center">
+            <h3 class="text-3xl font-bold mb-4 text-white">The Hidden Cost of 'Business as Usual'</h3>
+            <p class="max-w-3xl mx-auto var(--muted) mb-10">Every day, over 376 billion emails are sent. For the average professional, this translates to countless missed opportunities hidden in plain sight. Traditional signatures are static, unengaging, and ultimately, a waste of digital real estate.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="stat-card">
+                    <div class="text-5xl font-black" style="color: var(--accent2);">10.8</div>
+                    <div class="mt-2 font-semibold text-lg text-white">Hours Wasted Weekly</div>
+                    <p class="text-sm var(--muted) mt-1">Professionals spend over a full workday each week on unproductive email management, where only 10% of messages are business-critical.</p>
+                </div>
+                <div class="stat-card">
+                    <div class="text-5xl font-black" style="color: var(--accent2);">87%</div>
+                    <div class="mt-2 font-semibold text-lg text-white">Of B2B Buyers Judge You Early</div>
+                    <p class="text-sm var(--muted) mt-1">A strong opinion of your brand is formed based on your digital presence before a first meeting is ever scheduled.</p>
+                </div>
+                 <div class="stat-card">
+                    <div class="text-5xl font-black" style="color: var(--accent2);">69%</div>
+                    <div class="mt-2 font-semibold text-lg text-white">Of The Buyer's Journey is Digital</div>
+                    <p class="text-sm var(--muted) mt-1">Prospects complete a majority of their research and evaluation independently before ever engaging with a sales representative.</p>
                 </div>
             </div>
         </section>
 
-        <section id="comparison" class="infographic-section">
-             <div class="text-center"><h3 class="text-3xl md:text-4xl font-bold mb-12 text-white">Escaping the Digital Dead End</h3></div>
-             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
+        <section id="flow-comparison" class="mb-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="stat-card p-8">
-                    <h4 class="text-2xl font-bold text-center mb-6 text-white">Traditional Signature Flow</h4>
+                    <h4 class="text-2xl font-bold text-center mb-6 text-white">The Traditional Signature: A Digital Dead End</h4>
                     <div class="space-y-4">
-                        <div class="flex items-center"><div class="flex-shrink-0 bg-red-500 text-white h-10 w-10 rounded-full flex items-center justify-center font-bold">1</div><div class="ml-4 p-3 flow-step rounded-lg w-full">Email Sent with Static Info</div></div>
-                        <div class="flex justify-center h-8"><div class="w-px bg-purple-900"></div></div>
-                        <div class="flex items-center"><div class="flex-shrink-0 bg-red-500 text-white h-10 w-10 rounded-full flex items-center justify-center font-bold">2</div><div class="ml-4 p-3 flow-step rounded-lg w-full">Recipient Scans, No Action</div></div>
-                        <div class="flex justify-center h-8"><div class="w-px bg-purple-900"></div></div>
-                        <div class="flex items-center"><div class="flex-shrink-0 bg-red-500 text-white h-10 w-10 rounded-full flex items-center justify-center font-bold">3</div><div class="ml-4 p-3 flow-step rounded-lg w-full font-semibold">Opportunity is Lost</div></div>
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-red-500 text-white h-10 w-10 rounded-full flex items-center justify-center font-bold">1</div>
+                            <div class="ml-4 p-3 flow-step rounded-lg w-full">Email Sent with Static Info</div>
+                        </div>
+                        <div class="flex justify-center h-8">
+                            <div class="w-px bg-purple-900"></div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-red-500 text-white h-10 w-10 rounded-full flex items-center justify-center font-bold">2</div>
+                            <div class="ml-4 p-3 flow-step rounded-lg w-full">Recipient Scans, No Action Taken</div>
+                        </div>
+                        <div class="flex justify-center h-8">
+                            <div class="w-px bg-purple-900"></div>
+                        </div>
+                        <div class="flex items-center">
+                             <div class="flex-shrink-0 bg-red-500 text-white h-10 w-10 rounded-full flex items-center justify-center font-bold">3</div>
+                            <div class="ml-4 p-3 flow-step rounded-lg w-full font-semibold">Opportunity is Lost</div>
+                        </div>
                     </div>
                 </div>
                  <div class="stat-card p-8 border-2 border-dashed border-purple-400">
-                    <h4 class="text-2xl font-bold text-center mb-6" style="color: var(--accent2);">Dynamic Signature Flow</h4>
+                    <h4 class="text-2xl font-bold text-center mb-6" style="color: var(--accent2);">The Dynamic Signature: Your Growth Engine</h4>
                      <div class="space-y-4">
-                        <div class="flex items-center"><div class="flex-shrink-0 bg-green-500 text-white h-10 w-10 rounded-full flex items-center justify-center font-bold">1</div><div class="ml-4 p-3 flow-step rounded-lg w-full">Email Sent with Interactive Card</div></div>
-                        <div class="flex justify-center h-8"><div class="w-px bg-purple-900"></div></div>
-                        <div class="flex items-center"><div class="flex-shrink-0 bg-green-500 text-white h-10 w-10 rounded-full flex items-center justify-center font-bold">2</div><div class="ml-4 p-3 flow-step rounded-lg w-full">Recipient Clicks & Engages</div></div>
-                        <div class="flex justify-center h-8"><div class="w-px bg-purple-900"></div></div>
-                        <div class="flex items-center"><div class="flex-shrink-0 bg-green-500 text-white h-10 w-10 rounded-full flex items-center justify-center font-bold">3</div><div class="ml-4 p-3 flow-step rounded-lg w-full font-semibold">Connection Made, Lead Nurtured</div></div>
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-green-500 text-white h-10 w-10 rounded-full flex items-center justify-center font-bold">1</div>
+                            <div class="ml-4 p-3 flow-step rounded-lg w-full">Email Sent with Interactive Card</div>
+                        </div>
+                        <div class="flex justify-center h-8">
+                            <div class="w-px bg-purple-900"></div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-green-500 text-white h-10 w-10 rounded-full flex items-center justify-center font-bold">2</div>
+                            <div class="ml-4 p-3 flow-step rounded-lg w-full">Recipient Clicks, Engages & Qualifies</div>
+                        </div>
+                        <div class="flex justify-center h-8">
+                             <div class="w-px bg-purple-900"></div>
+                        </div>
+                        <div class="flex items-center">
+                             <div class="flex-shrink-0 bg-green-500 text-white h-10 w-10 rounded-full flex items-center justify-center font-bold">3</div>
+                            <div class="ml-4 p-3 flow-step rounded-lg w-full font-semibold">Connection is Made, Lead is Nurtured</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="solution" class="infographic-section">
-             <div class="text-center">
-                <h3 class="text-3xl md:text-4xl font-bold mb-4 text-white">Unlocking Potential with a Dynamic Gateway</h3>
-                <p class="max-w-3xl mx-auto var(--muted) mb-12 text-gray-400">By embedding engagement, intelligence, and automation into your digital handshake, every email becomes a potential relationship.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                    <div class="stat-card text-left"><h4 class="text-xl font-bold mb-2 text-white">1. Activate Engagement</h4><p class="text-sm var(--muted) mb-4 text-gray-400">Interactive content turns passive readers into active participants, boosting user activity by an impressive 591%.</p><div class="chart-container mx-auto max-w-sm"><canvas id="engagementChart"></canvas></div></div>
-                    <div class="stat-card text-left"><h4 class="text-xl font-bold mb-2 text-white">2. Infuse Intelligence</h4><p class="text-sm var(--muted) mb-4 text-gray-400">AI-driven personalization can increase revenue by 10-30% by transforming your signature into a lead-qualification tool.</p><div class="chart-container mx-auto max-w-lg"><canvas id="intelligenceChart"></canvas></div></div>
-                    <div class="stat-card text-left"><h4 class="text-xl font-bold mb-2 text-white">3. Leverage Automation</h4><p class="text-sm var(--muted) mb-4 text-gray-400">Trigger workflows and nurture leads automatically. A tiny fraction of email volume can drive massive results.</p><div class="chart-container mx-auto max-w-lg"><canvas id="automationChart"></canvas></div></div>
-                    <div class="stat-card text-left"><h4 class="text-xl font-bold mb-2 text-white">4. Embrace Visuals</h4><p class="text-sm var(--muted) mb-4 text-gray-400">Infographics are 30x more likely to be read than text, and visual information is recalled far more effectively.</p><div class="chart-container mx-auto max-w-lg"><canvas id="visualsChart"></canvas></div></div>
+        <section id="solution" class="mb-20 text-center">
+            <h3 class="text-3xl font-bold mb-4 text-white">Unlocking Potential with a Dynamic Gateway</h3>
+            <p class="max-w-3xl mx-auto var(--muted) mb-10">By embedding engagement, intelligence, and automation into your digital handshake, you turn every email into a potential relationship. The data proves that this proactive approach delivers tangible results.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="stat-card text-left">
+                    <h4 class="text-xl font-bold mb-2 text-white">1. Activate Engagement</h4>
+                    <p class="text-sm var(--muted) mb-4">Moving beyond static text to interactive elements is key. A simple call-to-action prompts curiosity and turns passive readers into active participants, dramatically increasing the likelihood of a meaningful connection.</p>
+                    <div class="chart-container mx-auto max-w-sm">
+                        <canvas id="engagementChart"></canvas>
+                    </div>
                 </div>
-            </div>
-        </section>
-        
-        <section id="steps" class="infographic-section">
-             <div class="text-center">
-                <h3 class="text-3xl md:text-4xl font-bold mb-4 text-white">Actionable Steps to a Smarter Handshake</h3>
-                <p class="max-w-3xl mx-auto var(--muted) mb-12 text-gray-400">You don't need a complete overhaul to start making your digital first impressions more impactful. Begin with these principles.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto text-left">
-                    <div class="stat-card space-y-3"><div class="text-2xl font-black text-purple-300">01</div><h4 class="text-lg font-bold text-white">Audit Your Touchpoints</h4><p class="text-sm text-gray-400">Go beyond email. Review your LinkedIn profile, forum signatures, and helpdesk replies. Are they consistent? Are they inviting interaction?</p></div>
-                    <div class="stat-card space-y-3"><div class="text-2xl font-black text-purple-300">02</div><h4 class="text-lg font-bold text-white">Infuse Interactive Elements</h4><p class="text-sm text-gray-400">Add clickable calls-to-action (CTAs) that link to a valuable resource, your booking calendar, or your latest project to spark curiosity.</p></div>
-                    <div class="stat-card space-y-3"><div class="text-2xl font-black text-purple-300">03</div><h4 class="text-lg font-bold text-white">Harness Smart Technologies</h4><p class="text-sm text-gray-400">Use platforms that offer dynamic, AI-supported capabilities to gather engagement stats and provide smarter connection recommendations.</p></div>
-                    <div class="stat-card space-y-3"><div class="text-2xl font-black text-purple-300">04</div><h4 class="text-lg font-bold text-white">Measure and Iterate</h4><p class="text-sm text-gray-400">Track clicks, views, and shares on your digital assets. Use this data to A/B test and continuously optimize your approach over time.</p></div>
+                <div class="stat-card text-left">
+                    <h4 class="text-xl font-bold mb-2 text-white">2. Infuse Intelligence</h4>
+                    <p class="text-sm var(--muted) mb-4">Leveraging AI to personalize content and analyze interactions transforms your signature into a lead-qualification tool. This intelligent filtering ensures you focus your energy on the most promising connections.</p>
+                    <div class="chart-container mx-auto max-w-lg">
+                         <canvas id="intelligenceChart"></canvas>
+                    </div>
+                </div>
+                <div class="stat-card text-left">
+                    <h4 class="text-xl font-bold mb-2 text-white">3. Leverage Automation</h4>
+                    <p class="text-sm var(--muted) mb-4">An intelligent signature can trigger workflows, nurture leads, and schedule follow-ups automatically. This small, automated portion of your email activity can drive a disproportionately massive share of your results.</p>
+                    <div class="chart-container mx-auto max-w-lg">
+                        <canvas id="automationChart"></canvas>
+                    </div>
+                </div>
+                <div class="stat-card text-left">
+                    <h4 class="text-xl font-bold mb-2 text-white">4. Embrace Visuals</h4>
+                    <p class="text-sm var(--muted) mb-4">Humans are visual creatures. Information paired with a relevant image is retained far more effectively than text alone. A visually appealing signature makes your digital handshake memorable.</p>
+                    <div class="chart-container mx-auto max-w-lg">
+                        <canvas id="visualsChart"></canvas>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="cta" class="infographic-section text-center min-h-[70vh] flex flex-col justify-center items-center">
-            <h3 class="text-4xl font-extrabold text-white">Your Digital Handshake, Elevated.</h3>
-            <p class="var(--muted) mt-4 mb-8 max-w-3xl mx-auto text-gray-400 text-lg">Stop leaving opportunities on the table. It's time to make every single email work for you, building your network and opening new doors 24/7. Transform your first impression from an afterthought into your greatest asset.</p>
-            <a href="https://Socialeap.net" target="_blank" rel="noopener noreferrer" class="inline-block btn-primary text-lg font-bold py-4 px-8 rounded-lg shadow-lg transition-transform hover:scale-105">Join the Hello! Waitlist & Redefine Networking</a>
-        </section>
     </main>
-    
+
+    <footer class="text-center py-12 px-4">
+        <div class="max-w-3xl mx-auto">
+            <h3 class="text-3xl font-extrabold text-white">Your Digital Handshake, Elevated.</h3>
+            <p class="var(--muted) mt-4 mb-8">Stop leaving opportunities on the table. It's time to make every single email work for you, building your network and opening new doors 24/7. Transform your first impression from an afterthought into your greatest asset.</p>
+            <a href="#" class="inline-block btn-primary text-white font-bold py-4 px-8 rounded-lg text-lg shadow-lg transition-all">Join the Hello! Waitlist & Redefine Networking</a>
+        </div>
+    </footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
-            const initializeCharts = () => {
-                const wrapLabel = (str, maxWidth) => {
-                    if (str.length <= maxWidth) return str;
-                    const words = str.split(' ');
-                    const lines = [];
-                    let currentLine = '';
-                    words.forEach(word => {
-                        if ((currentLine + word).length > maxWidth) {
-                            lines.push(currentLine.trim());
-                            currentLine = '';
-                        }
-                        currentLine += word + ' ';
-                    });
-                    lines.push(currentLine.trim());
-                    return lines;
-                };
 
-                const tooltipTitleCallback = (tooltipItems) => {
-                    const item = tooltipItems[0];
-                    let label = item.chart.data.labels[item.dataIndex];
-                    return Array.isArray(label) ? label.join(' ') : label;
-                };
-
-                Chart.defaults.color = 'rgba(165, 163, 187, 0.7)';
-                Chart.defaults.borderColor = 'rgba(139, 92, 246, 0.15)';
-                const sharedChartOptions = {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            callbacks: { title: tooltipTitleCallback },
-                            backgroundColor: 'rgba(19, 16, 34, 0.85)',
-                            borderColor: 'rgba(139, 92, 246, 0.28)',
-                            borderWidth: 1,
-                            titleFont: { size: 14, weight: 'bold' },
-                            bodyFont: { size: 12 },
-                            padding: 12,
-                            cornerRadius: 8,
-                            displayColors: false
-                        }
+            const wrapLabel = (str, maxWidth) => {
+                if (str.length <= maxWidth) {
+                    return str;
+                }
+                const words = str.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + word).length > maxWidth) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
                     }
-                };
-                const chartColors = { accent: '#8b5cf6', accent2: '#a78bfa', green: '#06D6A0', muted: 'rgba(255,255,255,0.1)' };
-
-                new Chart(document.getElementById('engagementChart').getContext('2d'), { type: 'doughnut', data: { labels: ['Uplift with Interactive Content', 'Baseline'], datasets: [{ data: [73, 27], backgroundColor: [chartColors.green, chartColors.muted], borderColor: ['#0d0a1a'], borderWidth: 4, hoverOffset: 8 }] }, options: { ...sharedChartOptions, cutout: '70%', plugins: { ...sharedChartOptions.plugins, title: { display: true, text: '73% Higher Click-to-Open Rate', font: { size: 16, weight: 'bold' }, color: '#eaeaf6', padding: { bottom: 20 } } } } });
-                new Chart(document.getElementById('intelligenceChart').getContext('2d'), { type: 'bar', data: { labels: ['Standard', 'AI-Personalized'], datasets: [{ label: 'Lead Increase', data: [100, 150], backgroundColor: [chartColors.muted, chartColors.accent], borderRadius: 5 }] }, options: { ...sharedChartOptions, scales: { y: { beginAtZero: true, ticks: { color: '#a5a3bb' } }, x: { ticks: { color: '#a5a3bb' } } }, plugins: { ...sharedChartOptions.plugins, title: { display: true, text: 'AI Drives a 50% Increase in Leads', font: { size: 16, weight: 'bold' }, color: '#eaeaf6', padding: { bottom: 20 } } } } });
-                new Chart(document.getElementById('automationChart').getContext('2d'), { type: 'bar', data: { labels: ['Email Volume', 'Sales Revenue'], datasets: [{ label: 'Automated Emails', data: [2, 37], backgroundColor: chartColors.accent, borderRadius: 5 }, { label: 'Manual/Bulk Emails', data: [98, 63], backgroundColor: chartColors.muted, borderRadius: 5 }] }, options: { ...sharedChartOptions, indexAxis: 'y', scales: { x: { stacked: true, ticks: { color: '#a5a3bb', callback: (v) => v + '%' } }, y: { stacked: true, grid: { display: false }, ticks: { color: '#a5a3bb' } } }, plugins: { ...sharedChartOptions.plugins, title: { display: true, text: '2% of Volume Drives 37% of Sales', font: { size: 14, weight: 'bold' }, color: '#eaeaf6', padding: { bottom: 20 } }, legend: { display: true, position: 'bottom', labels: { color: '#a5a3bb' } } } } });
-                new Chart(document.getElementById('visualsChart').getContext('2d'), { type: 'bar', data: { labels: [wrapLabel('Recall (Text Only)', 16), wrapLabel('Recall (With Visuals)', 16)], datasets: [{ label: 'Recall Rate', data: [10, 65], backgroundColor: [chartColors.muted, chartColors.green], borderRadius: 5, barPercentage: 0.6 }] }, options: { ...sharedChartOptions, scales: { y: { beginAtZero: true, max: 100, ticks: { color: '#a5a3bb', callback: (v) => v + '%' } }, x: { ticks: { color: '#a5a3bb', font: { size: 10 } } } }, plugins: { ...sharedChartOptions.plugins, title: { display: true, text: 'Visuals Boost Recall by over 6x', font: { size: 16, weight: 'bold' }, color: '#eaeaf6', padding: { bottom: 20 } } } } });
+                    currentLine += word + ' ';
+                });
+                lines.push(currentLine.trim());
+                return lines;
             };
 
-            const sections = document.querySelectorAll('.infographic-section');
-            const navLinks = document.querySelectorAll('.nav-link');
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                  return label.join(' ');
+                } else {
+                  return label;
+                }
+            };
             
-            const observerOptions = {
-                root: null,
-                rootMargin: '-50px 0px -50% 0px', // Trigger when section is in the upper half of the viewport
-                threshold: 0
+            Chart.defaults.color = 'rgba(165, 163, 187, 0.7)';
+            Chart.defaults.borderColor = 'rgba(139, 92, 246, 0.15)';
+            
+            const sharedChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        },
+                        backgroundColor: 'rgba(19, 16, 34, 0.85)',
+                        borderColor: 'rgba(139, 92, 246, 0.28)',
+                        borderWidth: 1,
+                        titleFont: { size: 14, weight: 'bold' },
+                        bodyFont: { size: 12 },
+                        padding: 12,
+                        cornerRadius: 8,
+                        displayColors: false
+                    }
+                }
+            };
+            
+            const chartColors = {
+                accent: '#8b5cf6',
+                accent2: '#a78bfa',
+                green: '#06D6A0',
+                warn: '#ffbf47',
+                red: '#ff5d6c',
+                muted: 'rgba(255,255,255,0.1)'
             };
 
-            const observer = new IntersectionObserver((entries) => {
-                let activeId = '';
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        activeId = entry.target.getAttribute('id');
-                    }
-                });
-
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if(activeId) {
-                        const activeLink = document.querySelector(`.nav-link[href="#${activeId}"]`);
-                        if (activeLink) {
-                           activeLink.classList.add('active');
+            const engagementCtx = document.getElementById('engagementChart').getContext('2d');
+            new Chart(engagementCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Click-to-Open Rate Uplift with Interactive Content', 'Baseline'],
+                    datasets: [{
+                        data: [73, 27],
+                        backgroundColor: [chartColors.green, chartColors.muted],
+                        borderColor: ['#0d0a1a'],
+                        borderWidth: 4,
+                        hoverOffset: 8
+                    }]
+                },
+                options: {
+                    ...sharedChartOptions,
+                    cutout: '70%',
+                     plugins: {
+                        ...sharedChartOptions.plugins,
+                        title: {
+                            display: true,
+                            text: '73% Higher Click-to-Open Rate',
+                            font: { size: 16, weight: 'bold' },
+                            color: '#eaeaf6',
+                            padding: { bottom: 20 }
                         }
                     }
-                });
-            }, observerOptions);
-
-            sections.forEach(section => {
-                observer.observe(section);
+                }
             });
 
-            // Lazy load charts
-            const solutionSection = document.getElementById('solution');
-            const chartObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        initializeCharts();
-                        observer.unobserve(entry.target);
+            const intelligenceCtx = document.getElementById('intelligenceChart').getContext('2d');
+            new Chart(intelligenceCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Standard Outreach', 'AI-Personalized Outreach'],
+                    datasets: [{
+                        label: 'Lead Generation Increase',
+                        data: [100, 150],
+                        backgroundColor: [chartColors.warn, chartColors.red],
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                     ...sharedChartOptions,
+                     scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: '#a5a3bb',
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: { color: '#a5a3bb' }
+                        }
+                    },
+                    plugins: {
+                        ...sharedChartOptions.plugins,
+                        title: {
+                            display: true,
+                            text: 'AI Drives a 50% Increase in Leads',
+                            font: { size: 16, weight: 'bold' },
+                            color: '#eaeaf6',
+                            padding: { bottom: 20 }
+                        }
                     }
-                });
-            }, { threshold: 0.1 });
+                }
+            });
 
-            chartObserver.observe(solutionSection);
+            const automationCtx = document.getElementById('automationChart').getContext('2d');
+            new Chart(automationCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Email Volume', 'Sales Revenue'],
+                    datasets: [
+                        {
+                            label: 'Automated Emails',
+                            data: [2, 37],
+                            backgroundColor: chartColors.accent,
+                            borderRadius: 5
+                        },
+                        {
+                            label: 'Manual/Bulk Emails',
+                            data: [98, 63],
+                            backgroundColor: chartColors.muted,
+                            borderRadius: 5
+                        }
+                    ]
+                },
+                options: {
+                     ...sharedChartOptions,
+                     indexAxis: 'y',
+                     scales: {
+                        x: {
+                            stacked: true,
+                            ticks: {
+                                color: '#a5a3bb',
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        },
+                        y: {
+                            stacked: true,
+                            grid: {
+                                display: false
+                            },
+                            ticks: { color: '#a5a3bb' }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            ...sharedChartOptions.plugins.tooltip
+                        },
+                        title: {
+                            display: true,
+                            text: 'Automated emails make up 2% of volume but drive 37% of sales',
+                            font: { size: 14, weight: 'bold' },
+                            color: '#eaeaf6',
+                            padding: { bottom: 20 }
+                        },
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                            labels: {
+                                color: '#a5a3bb'
+                            }
+                        }
+                    }
+                }
+            });
+
+            const visualsCtx = document.getElementById('visualsChart').getContext('2d');
+            new Chart(visualsCtx, {
+                type: 'bar',
+                data: {
+                    labels: [wrapLabel('Information Recall (Text Only)', 16), wrapLabel('Information Recall (With Visuals)', 16)],
+                    datasets: [{
+                        label: 'Recall Rate',
+                        data: [10, 65],
+                        backgroundColor: [chartColors.muted, chartColors.green],
+                        borderRadius: 5,
+                        barPercentage: 0.6
+                    }]
+                },
+                options: {
+                    ...sharedChartOptions,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                color: '#a5a3bb',
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#a5a3bb',
+                                font: {
+                                    size: 10
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                       ...sharedChartOptions.plugins,
+                       title: {
+                            display: true,
+                            text: 'Visuals Boost Information Recall by over 6x',
+                            font: { size: 16, weight: 'bold' },
+                            color: '#eaeaf6',
+                            padding: { bottom: 20 }
+                        }
+                    }
+                }
+            });
         });
     </script>
 </body>
