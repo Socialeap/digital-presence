@@ -19,18 +19,14 @@
             --muted: #a5a3bb;
             --accent: #8b5cf6;
             --accent2: #a78bfa;
-            --warn: #ffbf47;
             --green: #06D6A0;
             --red: #ff5d6c;
             --shadow: 0 8px 30px rgba(0,0,0,.35), inset 0 0 0 1px var(--stroke);
             --radius: 18px;
             --blur: saturate(120%) blur(12px);
         }
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden; /* Prevent scrolling on the body itself */
+        html {
+            scroll-behavior: smooth;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -38,17 +34,38 @@
             background: radial-gradient(1200px 800px at 10% -10%, #2e1f54 0, transparent 60%),
                         radial-gradient(1000px 600px at 110% 10%, #1e1340 0, transparent 60%),
                         linear-gradient(180deg, var(--bg1), var(--bg2));
-            display: flex;
-            flex-direction: column;
         }
-        .infographic-slide {
-            display: none; /* Hide all slides by default */
-            flex-grow: 1;
-            overflow-y: auto; /* Allow scrolling within a slide if needed */
-            padding: 2rem 1rem 8rem 1rem; /* Add padding for content and space for footer */
+        .infographic-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(19, 16, 34, 0.85);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border-bottom: 1px solid var(--stroke);
         }
-        .infographic-slide.active {
-            display: block; /* Show the active slide */
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+            padding: 1rem 0.5rem;
+            border-bottom: 2px solid transparent;
+            white-space: nowrap;
+        }
+        .nav-link:hover {
+            color: white;
+        }
+        .nav-link.active {
+            color: var(--accent2);
+            border-bottom-color: var(--accent2);
+        }
+        .infographic-section {
+            padding: 4rem 1rem;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        }
+        .infographic-section:first-of-type {
+            padding-top: 6rem;
+        }
+        .infographic-section:last-of-type {
+            border-bottom: none;
         }
         .stat-card {
             background: var(--card);
@@ -75,57 +92,34 @@
             color: #170e2f;
             font-weight: 700;
         }
-        .infographic-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1rem;
-            background: rgba(13, 10, 26, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-top: 1px solid var(--stroke);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            z-index: 100;
-        }
-        .nav-btn {
-            padding: 0.5rem 1.5rem;
-            border-radius: 99px;
-            border: 1px solid var(--stroke);
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text);
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .nav-btn:hover:not(:disabled) {
-            background-color: rgba(139, 92, 246, 0.2);
-        }
-        .nav-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
     </style>
 </head>
-<body>
+<body class="bg-gray-900 text-gray-200">
 
-    <main id="infographic-container">
-        <!-- Slide 1: Introduction -->
-        <section class="infographic-slide active">
-            <header class="text-center">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">The Digital Handshake</h1>
-                <h2 class="text-xl md:text-2xl font-semibold text-purple-300 mt-2">From Digital Dead End to Deal Maker</h2>
-                <p class="max-w-3xl mx-auto mt-4 text-gray-400">In a world of digital noise, your email signature is an overlooked powerhouse. It's time to transform it from a passive sign-off into your most active networking asset.</p>
-            </header>
+    <header class="infographic-header">
+        <nav class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-center items-center space-x-1 md:space-x-6 text-xs sm:text-sm font-semibold text-gray-400">
+                <a href="#intro" class="nav-link">Intro</a>
+                <a href="#problem" class="nav-link">The Cost</a>
+                <a href="#comparison" class="nav-link">The Flow</a>
+                <a href="#solution" class="nav-link">The Gateway</a>
+                <a href="#steps" class="nav-link">Action Steps</a>
+                <a href="#cta" class="nav-link">Next Step</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="intro" class="infographic-section text-center min-h-[60vh] flex flex-col justify-center items-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">The Digital Handshake</h1>
+            <h2 class="text-xl md:text-3xl font-semibold text-purple-300 mt-2">From Digital Dead End to Deal Maker</h2>
+            <p class="max-w-3xl mx-auto mt-6 text-gray-400 text-lg">In a world with 4.6 billion new pieces of content daily, your email signature must be more than a sign-off. It's time to transform it into your most active networking asset.</p>
         </section>
 
-        <!-- Slide 2: The Problem -->
-        <section class="infographic-slide">
+        <section id="problem" class="infographic-section">
              <div class="text-center">
-                <h3 class="text-3xl font-bold mb-4 text-white">The Hidden Cost of 'Business as Usual'</h3>
-                <p class="max-w-3xl mx-auto var(--muted) mb-10 text-gray-400">Traditional signatures are static and unengaging. This results in countless missed opportunities hidden in the daily flood of over 376 billion emails.</p>
+                <h3 class="text-3xl md:text-4xl font-bold mb-4 text-white">The Hidden Cost of 'Business as Usual'</h3>
+                <p class="max-w-3xl mx-auto var(--muted) mb-12 text-gray-400">Traditional signatures are static and unengaging. This results in countless missed opportunities hidden in the daily flood of over 376 billion emails.</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
                     <div class="stat-card">
                         <div class="text-5xl font-black" style="color: var(--accent2);">10.8</div>
@@ -146,11 +140,11 @@
             </div>
         </section>
 
-        <!-- Slide 3: Flow Comparison -->
-        <section class="infographic-slide">
-             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
+        <section id="comparison" class="infographic-section">
+             <div class="text-center"><h3 class="text-3xl md:text-4xl font-bold mb-12 text-white">Escaping the Digital Dead End</h3></div>
+             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
                 <div class="stat-card p-8">
-                    <h4 class="text-2xl font-bold text-center mb-6 text-white">The Traditional Signature: A Digital Dead End</h4>
+                    <h4 class="text-2xl font-bold text-center mb-6 text-white">Traditional Signature Flow</h4>
                     <div class="space-y-4">
                         <div class="flex items-center"><div class="flex-shrink-0 bg-red-500 text-white h-10 w-10 rounded-full flex items-center justify-center font-bold">1</div><div class="ml-4 p-3 flow-step rounded-lg w-full">Email Sent with Static Info</div></div>
                         <div class="flex justify-center h-8"><div class="w-px bg-purple-900"></div></div>
@@ -160,7 +154,7 @@
                     </div>
                 </div>
                  <div class="stat-card p-8 border-2 border-dashed border-purple-400">
-                    <h4 class="text-2xl font-bold text-center mb-6" style="color: var(--accent2);">The Dynamic Signature: Your Growth Engine</h4>
+                    <h4 class="text-2xl font-bold text-center mb-6" style="color: var(--accent2);">Dynamic Signature Flow</h4>
                      <div class="space-y-4">
                         <div class="flex items-center"><div class="flex-shrink-0 bg-green-500 text-white h-10 w-10 rounded-full flex items-center justify-center font-bold">1</div><div class="ml-4 p-3 flow-step rounded-lg w-full">Email Sent with Interactive Card</div></div>
                         <div class="flex justify-center h-8"><div class="w-px bg-purple-900"></div></div>
@@ -172,81 +166,43 @@
             </div>
         </section>
 
-        <!-- Slide 4: The Solution (Charts) -->
-        <section class="infographic-slide">
+        <section id="solution" class="infographic-section">
              <div class="text-center">
-                <h3 class="text-3xl font-bold mb-4 text-white">Unlocking Potential with a Dynamic Gateway</h3>
-                <p class="max-w-3xl mx-auto var(--muted) mb-10 text-gray-400">By embedding engagement, intelligence, and automation into your digital handshake, every email becomes a potential relationship.</p>
+                <h3 class="text-3xl md:text-4xl font-bold mb-4 text-white">Unlocking Potential with a Dynamic Gateway</h3>
+                <p class="max-w-3xl mx-auto var(--muted) mb-12 text-gray-400">By embedding engagement, intelligence, and automation into your digital handshake, every email becomes a potential relationship.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                    <div class="stat-card text-left"><h4 class="text-xl font-bold mb-2 text-white">1. Activate Engagement</h4><p class="text-sm var(--muted) mb-4 text-gray-400">Interactive elements turn passive readers into active participants, dramatically increasing connection likelihood.</p><div class="chart-container mx-auto max-w-sm"><canvas id="engagementChart"></canvas></div></div>
-                    <div class="stat-card text-left"><h4 class="text-xl font-bold mb-2 text-white">2. Infuse Intelligence</h4><p class="text-sm var(--muted) mb-4 text-gray-400">AI personalization and analysis transforms your signature into a lead-qualification tool, focusing your energy.</p><div class="chart-container mx-auto max-w-lg"><canvas id="intelligenceChart"></canvas></div></div>
+                    <div class="stat-card text-left"><h4 class="text-xl font-bold mb-2 text-white">1. Activate Engagement</h4><p class="text-sm var(--muted) mb-4 text-gray-400">Interactive content turns passive readers into active participants, boosting user activity by an impressive 591%.</p><div class="chart-container mx-auto max-w-sm"><canvas id="engagementChart"></canvas></div></div>
+                    <div class="stat-card text-left"><h4 class="text-xl font-bold mb-2 text-white">2. Infuse Intelligence</h4><p class="text-sm var(--muted) mb-4 text-gray-400">AI-driven personalization can increase revenue by 10-30% by transforming your signature into a lead-qualification tool.</p><div class="chart-container mx-auto max-w-lg"><canvas id="intelligenceChart"></canvas></div></div>
                     <div class="stat-card text-left"><h4 class="text-xl font-bold mb-2 text-white">3. Leverage Automation</h4><p class="text-sm var(--muted) mb-4 text-gray-400">Trigger workflows and nurture leads automatically. A tiny fraction of email volume can drive massive results.</p><div class="chart-container mx-auto max-w-lg"><canvas id="automationChart"></canvas></div></div>
-                    <div class="stat-card text-left"><h4 class="text-xl font-bold mb-2 text-white">4. Embrace Visuals</h4><p class="text-sm var(--muted) mb-4 text-gray-400">Information paired with relevant images is retained far more effectively, making your digital handshake memorable.</p><div class="chart-container mx-auto max-w-lg"><canvas id="visualsChart"></canvas></div></div>
+                    <div class="stat-card text-left"><h4 class="text-xl font-bold mb-2 text-white">4. Embrace Visuals</h4><p class="text-sm var(--muted) mb-4 text-gray-400">Infographics are 30x more likely to be read than text, and visual information is recalled far more effectively.</p><div class="chart-container mx-auto max-w-lg"><canvas id="visualsChart"></canvas></div></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="steps" class="infographic-section">
+             <div class="text-center">
+                <h3 class="text-3xl md:text-4xl font-bold mb-4 text-white">Actionable Steps to a Smarter Handshake</h3>
+                <p class="max-w-3xl mx-auto var(--muted) mb-12 text-gray-400">You don't need a complete overhaul to start making your digital first impressions more impactful. Begin with these principles.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto text-left">
+                    <div class="stat-card space-y-3"><div class="text-2xl font-black text-purple-300">01</div><h4 class="text-lg font-bold text-white">Audit Your Touchpoints</h4><p class="text-sm text-gray-400">Go beyond email. Review your LinkedIn profile, forum signatures, and helpdesk replies. Are they consistent? Are they inviting interaction?</p></div>
+                    <div class="stat-card space-y-3"><div class="text-2xl font-black text-purple-300">02</div><h4 class="text-lg font-bold text-white">Infuse Interactive Elements</h4><p class="text-sm text-gray-400">Add clickable calls-to-action (CTAs) that link to a valuable resource, your booking calendar, or your latest project to spark curiosity.</p></div>
+                    <div class="stat-card space-y-3"><div class="text-2xl font-black text-purple-300">03</div><h4 class="text-lg font-bold text-white">Harness Smart Technologies</h4><p class="text-sm text-gray-400">Use platforms that offer dynamic, AI-supported capabilities to gather engagement stats and provide smarter connection recommendations.</p></div>
+                    <div class="stat-card space-y-3"><div class="text-2xl font-black text-purple-300">04</div><h4 class="text-lg font-bold text-white">Measure and Iterate</h4><p class="text-sm text-gray-400">Track clicks, views, and shares on your digital assets. Use this data to A/B test and continuously optimize your approach over time.</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 5: Conclusion / CTA -->
-        <section class="infographic-slide">
-            <div class="text-center flex flex-col justify-center items-center h-full">
-                <h3 class="text-4xl font-extrabold text-white">Your Digital Handshake, Elevated.</h3>
-                <p class="var(--muted) mt-4 mb-8 max-w-3xl mx-auto text-gray-400">Stop leaving opportunities on the table. It's time to make every single email work for you, building your network and opening new doors 24/7. Transform your first impression from an afterthought into your greatest asset.</p>
-                <a href="https://Socialeap.net" target="_blank" rel="noopener noreferrer" class="inline-block btn-primary text-lg font-bold py-4 px-8 rounded-lg shadow-lg transition-transform hover:scale-105">Join the Hello! Waitlist & Redefine Networking</a>
-            </div>
+        <section id="cta" class="infographic-section text-center min-h-[70vh] flex flex-col justify-center items-center">
+            <h3 class="text-4xl font-extrabold text-white">Your Digital Handshake, Elevated.</h3>
+            <p class="var(--muted) mt-4 mb-8 max-w-3xl mx-auto text-gray-400 text-lg">Stop leaving opportunities on the table. It's time to make every single email work for you, building your network and opening new doors 24/7. Transform your first impression from an afterthought into your greatest asset.</p>
+            <a href="https://Socialeap.net" target="_blank" rel="noopener noreferrer" class="inline-block btn-primary text-lg font-bold py-4 px-8 rounded-lg shadow-lg transition-transform hover:scale-105">Join the Hello! Waitlist & Redefine Networking</a>
         </section>
     </main>
-
-    <footer class="infographic-nav">
-        <button id="prevBtn" class="nav-btn">Previous</button>
-        <span id="slideCounter" class="text-sm text-gray-400"></span>
-        <button id="nextBtn" class="nav-btn">Next</button>
-    </footer>
-
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const slides = document.querySelectorAll('.infographic-slide');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const slideCounter = document.getElementById('slideCounter');
-            let currentSlide = 0;
-            let chartsInitialized = false;
-
-            function showSlide(index) {
-                slides.forEach((slide, i) => {
-                    slide.classList.remove('active');
-                    if (i === index) {
-                        slide.classList.add('active');
-                    }
-                });
-                currentSlide = index;
-                updateNav();
-
-                // Initialize charts only when their slide is first shown
-                if (index === 3 && !chartsInitialized) {
-                    initializeCharts();
-                    chartsInitialized = true;
-                }
-            }
-
-            function updateNav() {
-                slideCounter.textContent = `Page ${currentSlide + 1} of ${slides.length}`;
-                prevBtn.disabled = currentSlide === 0;
-                nextBtn.disabled = currentSlide === slides.length - 1;
-            }
-
-            prevBtn.addEventListener('click', () => {
-                if (currentSlide > 0) {
-                    showSlide(currentSlide - 1);
-                }
-            });
-
-            nextBtn.addEventListener('click', () => {
-                if (currentSlide < slides.length - 1) {
-                    showSlide(currentSlide + 1);
-                }
-            });
-
-            function initializeCharts() {
+            
+            const initializeCharts = () => {
                 const wrapLabel = (str, maxWidth) => {
                     if (str.length <= maxWidth) return str;
                     const words = str.split(' ');
@@ -289,15 +245,58 @@
                         }
                     }
                 };
-                const chartColors = { accent: '#8b5cf6', accent2: '#a78bfa', green: '#06D6A0', warn: '#ffbf47', red: '#ff5d6c', muted: 'rgba(255,255,255,0.1)' };
+                const chartColors = { accent: '#8b5cf6', accent2: '#a78bfa', green: '#06D6A0', muted: 'rgba(255,255,255,0.1)' };
 
                 new Chart(document.getElementById('engagementChart').getContext('2d'), { type: 'doughnut', data: { labels: ['Uplift with Interactive Content', 'Baseline'], datasets: [{ data: [73, 27], backgroundColor: [chartColors.green, chartColors.muted], borderColor: ['#0d0a1a'], borderWidth: 4, hoverOffset: 8 }] }, options: { ...sharedChartOptions, cutout: '70%', plugins: { ...sharedChartOptions.plugins, title: { display: true, text: '73% Higher Click-to-Open Rate', font: { size: 16, weight: 'bold' }, color: '#eaeaf6', padding: { bottom: 20 } } } } });
                 new Chart(document.getElementById('intelligenceChart').getContext('2d'), { type: 'bar', data: { labels: ['Standard', 'AI-Personalized'], datasets: [{ label: 'Lead Increase', data: [100, 150], backgroundColor: [chartColors.muted, chartColors.accent], borderRadius: 5 }] }, options: { ...sharedChartOptions, scales: { y: { beginAtZero: true, ticks: { color: '#a5a3bb' } }, x: { ticks: { color: '#a5a3bb' } } }, plugins: { ...sharedChartOptions.plugins, title: { display: true, text: 'AI Drives a 50% Increase in Leads', font: { size: 16, weight: 'bold' }, color: '#eaeaf6', padding: { bottom: 20 } } } } });
                 new Chart(document.getElementById('automationChart').getContext('2d'), { type: 'bar', data: { labels: ['Email Volume', 'Sales Revenue'], datasets: [{ label: 'Automated Emails', data: [2, 37], backgroundColor: chartColors.accent, borderRadius: 5 }, { label: 'Manual/Bulk Emails', data: [98, 63], backgroundColor: chartColors.muted, borderRadius: 5 }] }, options: { ...sharedChartOptions, indexAxis: 'y', scales: { x: { stacked: true, ticks: { color: '#a5a3bb', callback: (v) => v + '%' } }, y: { stacked: true, grid: { display: false }, ticks: { color: '#a5a3bb' } } }, plugins: { ...sharedChartOptions.plugins, title: { display: true, text: '2% of Volume Drives 37% of Sales', font: { size: 14, weight: 'bold' }, color: '#eaeaf6', padding: { bottom: 20 } }, legend: { display: true, position: 'bottom', labels: { color: '#a5a3bb' } } } } });
                 new Chart(document.getElementById('visualsChart').getContext('2d'), { type: 'bar', data: { labels: [wrapLabel('Recall (Text Only)', 16), wrapLabel('Recall (With Visuals)', 16)], datasets: [{ label: 'Recall Rate', data: [10, 65], backgroundColor: [chartColors.muted, chartColors.green], borderRadius: 5, barPercentage: 0.6 }] }, options: { ...sharedChartOptions, scales: { y: { beginAtZero: true, max: 100, ticks: { color: '#a5a3bb', callback: (v) => v + '%' } }, x: { ticks: { color: '#a5a3bb', font: { size: 10 } } } }, plugins: { ...sharedChartOptions.plugins, title: { display: true, text: 'Visuals Boost Recall by over 6x', font: { size: 16, weight: 'bold' }, color: '#eaeaf6', padding: { bottom: 20 } } } } });
-            }
+            };
+
+            const sections = document.querySelectorAll('.infographic-section');
+            const navLinks = document.querySelectorAll('.nav-link');
             
-            showSlide(0);
+            const observerOptions = {
+                root: null,
+                rootMargin: '-50px 0px -50% 0px', // Trigger when section is in the upper half of the viewport
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                let activeId = '';
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        activeId = entry.target.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if(activeId) {
+                        const activeLink = document.querySelector(`.nav-link[href="#${activeId}"]`);
+                        if (activeLink) {
+                           activeLink.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Lazy load charts
+            const solutionSection = document.getElementById('solution');
+            const chartObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        initializeCharts();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            chartObserver.observe(solutionSection);
         });
     </script>
 </body>
