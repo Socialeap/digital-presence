@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Digital Handshake: From Dead End to Deal Maker</title>
 
-  <!-- Tailwind (CDN build) and Chart.js -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- Fonts (with swap for less reflow) -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet"/>
@@ -100,19 +98,25 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="text-center py-12 px-4">
-    <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">The Digital Handshake</h1>
-    <h2 class="text-xl md:text-2xl font-semibold text-purple-300 mt-2">From Digital Dead End to Deal Maker</h2>
-    <p class="max-w-3xl mx-auto mt-4 text-gray-400">
-      In a world of digital noise, your email signature is an overlooked powerhouse. It's time to transform it from a passive sign-off into your most active networking asset.
-    </p>
+  <header class="relative text-center py-20 px-4 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <video class="w-full h-full object-cover" src="https://video.wixstatic.com/video/c3283f_4ed082e4954b4509bf45df79be0d41b7/1080p/mp4/file.mp4" autoplay loop muted playsinline></video>
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+    </div>
+    <div class="relative z-10">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-white leading-tight max-w-4xl mx-auto mb-6">
+            Learn Why Your Email Signature is Your Most Costly, Underperforming Asset, and What can Transform it into an AI-Smart Growth Engine
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-bold text-purple-300 mt-2">The Digital Handshake</h2>
+        <h3 class="text-lg md:text-xl font-semibold text-gray-300 mt-1">From Digital Dead End to Deal Maker</h3>
+        <p class="max-w-3xl mx-auto mt-4 text-gray-400">
+          In a world of digital noise, your email signature is an overlooked powerhouse. It's time to transform it from a passive sign-off into your most active networking asset.
+        </p>
+    </div>
   </header>
 
-  <!-- Main -->
   <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-    <!-- Problem -->
     <section id="problem" class="mb-20 text-center">
       <h3 class="text-3xl font-bold mb-4 text-white">The Hidden Cost of 'Business as Usual'</h3>
       <p class="max-w-3xl mx-auto muted mb-10">
@@ -146,11 +150,9 @@
       </div>
     </section>
 
-    <!-- Flow Comparison -->
     <section id="flow-comparison" class="mb-20">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-        <!-- Traditional -->
         <div class="stat-card p-8">
           <h4 class="text-2xl font-bold text-center mb-6 text-white">The Traditional Signature: A Digital Dead End</h4>
           <div class="space-y-4">
@@ -171,7 +173,6 @@
           </div>
         </div>
 
-        <!-- Dynamic -->
         <div class="stat-card p-8 border-2 border-dashed border-purple-400">
           <h4 class="text-2xl font-bold text-center mb-6" style="color: var(--accent2);">The Dynamic Signature: Your Growth Engine</h4>
           <div class="space-y-4">
@@ -195,7 +196,6 @@
       </div>
     </section>
 
-    <!-- Solution -->
     <section id="solution" class="mb-20 text-center">
       <h3 class="text-3xl font-bold mb-4 text-white">Unlocking Potential with a Dynamic Gateway</h3>
       <p class="max-w-3xl mx-auto muted mb-10">
@@ -249,7 +249,6 @@
 
   </main>
 
-  <!-- Footer -->
   <footer class="text-center py-12 px-4">
     <div class="max-w-3xl mx-auto">
       <h3 class="text-3xl font-extrabold text-white">Your Digital Handshake, Elevated.</h3>
@@ -260,7 +259,6 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Helpers
